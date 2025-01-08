@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <h1>User List</h1>
+        <div class="text-end">
+            <button [routerLink]="'add'" class="btn btn-outline-primary">ADD User</button>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>EMail</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>
+                        {{user.id}}
+                    </td>
+                    <td>
+                        {{user.username}}
+                    </td>
+                    <td>
+                        {{user.email}}
+                    </td>
+                    <td>
+                       <a [routerLink]="['edit', user.id]" class="btn btn-warning me-3">Edit</a>
+                       <a class="btn btn-danger" (click)="deleteUserId(user.id)">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

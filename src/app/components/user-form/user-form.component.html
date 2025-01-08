@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="row">
+            <div class="userform border-2 mt-5 col-6 p-5 m-auto shadow">
+                    <h4 class="text-center">{{isEditable ? 'Update User' : 'Add User'}}</h4>
+                <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Username
+                        </label>
+                        <input formControlName="username" type="text" class="form-control">
+                        <div class="text-danger" *ngIf="userForm.get('username')?.touched && userForm.get('username')?.invalid">
+                            Username required
+                        </div>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="" class="form-label">
+                            Password
+                        </label>
+                        <input formControlName="password" type="password" class="form-control"/>
+                    <div class="text-danger" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+                        Password Required
+                    </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="" class="form-label">
+                            Email
+                        </label>
+                        <input formControlName="email" type="email" class="form-control"/>
+                    <div class="text-danger" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+                        Email Required
+                    </div>
+                    </div>
+                    <div class="text-center">
+                        <button  [disabled]="userForm.invalid" [ngClass]="{'btn-secondary': userForm.invalid, 'btn-primary': userForm.valid}" class="btn">
+                            {{isEditable ? 'Update User' : 'Add User'}}
+                        </button>
+                        <a routerLink="/userlist" class="btn btn-secondary ms-2"> Cancel</a>
+                    </div>
+                </form>                
+            </div>
+
+        </div>
+    </div>
+</div>
