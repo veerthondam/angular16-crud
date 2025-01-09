@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '', redirectTo: 'userlist', pathMatch: 'full'
   },
   {
-    path: 'userlist', component: UserlistComponent
+    path: 'userlist', component: UserlistComponent, data: {reuse: true}
   },{
     path: 'userlist/add', component: UserFormComponent
   },{

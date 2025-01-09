@@ -13,11 +13,15 @@ export class UserlistComponent implements OnInit {
   errorMsg: string = "";
 
 ngOnInit(): void {
-  this.onSubmit();
  
+  this.retrieveUsers();
+ 
+  this.userService.userUpdated$.subscribe({
+    next: () => this.retrieveUsers()
+  })
 
 }
-  onSubmit(){
+  retrieveUsers(){
     this.userService.getAllUsers().subscribe(
       {
         next: (data) => this.users = data,
@@ -26,11 +30,17 @@ ngOnInit(): void {
     )
   }
   deleteUserId(id: string): void{
+    if (confirm('Are you sure you want to delete this user?')) {
     this.userService.deleteUser(id).subscribe({
       next: () => {
         this.users = this.users.filter(user => user.id !== id)
       }
     })
+  }
 
+  }
+
+  trackByUserId(index: number, user: User){
+    return user.id;
   }
 }

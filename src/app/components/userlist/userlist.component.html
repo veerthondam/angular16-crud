@@ -4,7 +4,7 @@
         <div class="text-end">
             <button [routerLink]="'add'" class="btn btn-outline-primary">ADD User</button>
         </div>
-        <table class="table table-striped">
+        <table class="table table-striped" *ngIf="users.length > 0; else noUsers">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -14,9 +14,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of users">
+                <tr *ngFor="let user of users; let i=index">
                     <td>
-                        {{user.id}}
+                        {{i+1}}
                     </td>
                     <td>
                         {{user.username}}
@@ -31,5 +31,11 @@
                 </tr>
             </tbody>
         </table>
+
+        <ng-template #noUsers>
+            <div class="mx-auto w-50 shadow py-4 text-center">
+                No Users, Please add 
+            </div>
+        </ng-template>
     </div>
 </div>
