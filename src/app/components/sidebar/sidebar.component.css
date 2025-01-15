@@ -1,0 +1,23 @@
+.dashboard-sidebar {
+  flex: 0 0 15%; 
+  background-color: #000;
+  color: white;
+  padding: 1rem;
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  width: 15%; 
+  overflow-y: auto;
+}
+
+@media (max-width: 992px) {
+  .dashboard-sidebar {
+      flex: 0 0 20%;
+      width: 20%;
+  }
+}
+@media (max-width: 768px) {
+  .dashboard-sidebar {
+      display: none; 
+  }
+}

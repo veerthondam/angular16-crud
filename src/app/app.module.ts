@@ -9,13 +9,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategyService } from './services/custom-reuse-strategy.service';
+import { HeaderComponent } from './components/header/header.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ProductslistComponent } from './components/productslist/productslist.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserlistComponent,
     UseraddComponent,
-    UserFormComponent
+    UserFormComponent,
+    HeaderComponent,
+    DashboardComponent,
+    SidebarComponent,
+    ProductslistComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -26,8 +37,11 @@ import { CustomReuseStrategyService } from './services/custom-reuse-strategy.ser
   providers: [
     {
       provide: RouteReuseStrategy,
-      useClass: CustomReuseStrategyService
-    }
+      useClass: CustomReuseStrategyService,
+      
+    },
+    ProductService
+    
   ],
   bootstrap: [AppComponent]
 })

@@ -9,6 +9,7 @@ export class CustomReuseStrategyService implements RouteReuseStrategy {
   private storedRoutes = new Map<string, DetachedRouteHandle>();
 
    shouldDetach(route: ActivatedRouteSnapshot): boolean {
+    console.log(route)
     return !!route.data && route.data['reuse'];
     
   }
@@ -37,6 +38,7 @@ export class CustomReuseStrategyService implements RouteReuseStrategy {
 }
 
 shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean{
+
   return future.routeConfig === curr.routeConfig;
 }
 }

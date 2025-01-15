@@ -1,0 +1,5 @@
+.form-container {
+    max-height: 400px !important; /* Adjust the height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 15px; /* Optional: prevent content from being cut off */
+  }

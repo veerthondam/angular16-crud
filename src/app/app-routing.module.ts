@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserlistComponent } from './components/userlist/userlist.component';
-import { UseraddComponent } from './components/useradd/useradd.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: 'userlist', pathMatch: 'full'
+    path: '', redirectTo: 'dashboard', pathMatch: 'full'
+  },
+  {
+    path: 'dashboard', component: DashboardComponent
   },
   {
     path: 'userlist', component: UserlistComponent, data: {reuse: true}
@@ -14,7 +17,8 @@ const routes: Routes = [
     path: 'userlist/add', component: UserFormComponent
   },{
     path: 'userlist/edit/:id', component: UserFormComponent
-  }
+  },
+  { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) }
 ];
 
 @NgModule({
